@@ -1,0 +1,185 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.toolisticon.apstackct</groupId>
+    <artifactId>apstackct-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>apstackct-parent</name>
+    <description>Java Compliance Test for toolisticon annotation processor stack</description>
+    <url>https://github.com/holisticon/apstackct/</url>
+
+    <modules>
+
+        <!-- modules -->
+        <module>api</module>
+        <module>processor</module>
+
+        <!--
+        <module>example</module>
+        <module>integrationTest</module>
+        -->
+
+    </modules>
+
+
+    <organization>
+        <name>Holisticon AG</name>
+        <url>http://www.holisticon.de/</url>
+    </organization>
+    <developers>
+        <developer>
+            <name>Tobias Stamann</name>
+            <email>tobias.stamann@holisticon.de</email>
+            <organization>Holisticon AG</organization>
+            <organizationUrl>http://holisticon.de/</organizationUrl>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>
+                https://en.wikipedia.org/wiki/MIT_License
+            </url>
+            <comments>s. LICENSE file</comments>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <inceptionYear>2021</inceptionYear>
+
+    <prerequisites>
+        <maven>3.0.4</maven>
+    </prerequisites>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+        <encoding>UTF-8</encoding>
+
+        <java.version>1.7</java.version>
+
+        <java.compile.source.version>1.7</java.compile.source.version>
+        <java.compile.target.version>1.7</java.compile.target.version>
+
+
+        <cute.version>0.9.0</cute.version>
+        <aptk.version>0.15.4</aptk.version>
+        <spiap.version>0.8.1</spiap.version>
+
+        <!-- versions of test dependencies -->
+        <junit.version>4.12</junit.version>
+        <hamcrest.version>2.2</hamcrest.version>
+
+
+        <!-- plugin versions -->
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
+
+        <maven-processor-plugin.version>2.2.4</maven-processor-plugin.version>
+
+    </properties>
+
+
+    <build>
+        <defaultGoal>clean install</defaultGoal>
+        <plugins>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+
+        </plugins>
+        <pluginManagement>
+            <plugins>
+
+
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${java.compile.source.version}</source>
+                        <target>${java.compile.target.version}</target>
+                    </configuration>
+                    <version>${maven-compiler-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven-assembly-plugin.version}</version>
+                </plugin>
+
+
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencies>
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>${hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- internal -->
+            <dependency>
+                <groupId>io.toolisticon.cute</groupId>
+                <artifactId>cute</artifactId>
+                <version>${cute.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.toolisticon.apstackct</groupId>
+                <artifactId>apstackct-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>io.toolisticon.spiap</groupId>
+                <artifactId>spiap-api</artifactId>
+                <version>${spiap.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>io.toolisticon.aptk</groupId>
+                <artifactId>tools</artifactId>
+                <version>${aptk.version}</version>
+            </dependency>
+
+            <!-- processors apis -->
+            <dependency>
+                <groupId>io.toolisticon.aptk</groupId>
+                <artifactId>annotationwrapper-api</artifactId>
+                <version>${aptk.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>
